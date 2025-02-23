@@ -1,95 +1,88 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Slider from "@/components/Slider/Slider";
+import Header from "@/components/Header/Header";
+
+import { Host_Grotesk } from 'next/font/google'
+import { MdArrowForwardIos } from "react-icons/md";
+import Products from "@/components/Products/Products";
+import Categories from "@/components/Categories/Categories";
+import Brands from "@/components/Brands/Brands";
+import Footer from "@/components/Footer/Footer";
+
+const hk = Host_Grotesk({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    <div className="w-full h-full">
+      <Header hk={hk} />
+      <hr className="text-gray-100 dark:text-neutral-700"></hr>
+      <div className="bg-primarylight dark:bg-primarydark">
+        <div className="flex flex-col items-center justify-center w-full mt-4">
+          <div className="relative flex flex-col w-[calc(100%-20rem)] gap-16 last:mb-16">
+            <Slider />
+            <div className="flex flex-col">
+              <div className="flex w-full h-fit justify-between items-center">
+                <h1 className={`${hk.className} text-2xl`}>Maiores descontos em <span className="text-selected font-semibold">Celulares</span></h1>
+                <div className="flex flex-col group transition-all duration-75 cursor-pointer">
+                  <div className="flex items-center gap-2 cursor-pointer group-hover:scale-95">
+                    <span className="">Ver mais</span>
+                    <MdArrowForwardIos className="text-selected group-hover:brightness-105" />
+                  </div>
+                  <div className="relative w-full h-0.5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out ">
+                    <div className="absolute bg-selected w-full h-0.5"></div>
+                  </div>
+                </div>
+              </div>
+              <div className="relative w-full h-0.5">
+                <div className="absolute bg-thirdlight w-full h-0.5"></div>
+                <div className="absolute bg-selected w-96 h-0.5"></div>
+              </div>
+              <Products />
+            </div>
+            <div className="flex flex-col">
+              <div className="flex w-full h-fit justify-between items-center">
+                <h1 className={`${hk.className} text-2xl`}><span className="text-selected font-semibold">Categorias</span> mais procuradas</h1>
+                <div className="flex flex-col group transition-all duration-75 cursor-pointer">
+                  <div className="flex items-center gap-2 cursor-pointer group-hover:scale-95">
+                    <span className="">Ver mais</span>
+                    <MdArrowForwardIos className="text-selected group-hover:brightness-105" />
+                  </div>
+                  <div className="relative w-full h-0.5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out ">
+                    <div className="absolute bg-selected w-full h-0.5"></div>
+                  </div>
+                </div>
+              </div>
+              <div className="relative w-full h-0.5">
+                <div className="absolute bg-thirdlight w-full h-0.5"></div>
+                <div className="absolute bg-selected w-96 h-0.5"></div>
+              </div>
+              <Categories />
+            </div>
+            <div className="flex flex-col">
+              <div className="flex w-full h-fit justify-between items-center">
+                <h1 className={`${hk.className} text-2xl`}>As <span className="text-selected font-semibold">Marcas</span> mais amadas</h1>
+                <div className="flex flex-col group transition-all duration-75 cursor-pointer">
+                  <div className="flex items-center gap-2 cursor-pointer group-hover:scale-95">
+                    <span className="">Ver mais</span>
+                    <MdArrowForwardIos className="text-selected group-hover:brightness-105" />
+                  </div>
+                  <div className="relative w-full h-0.5 opacity-0 group-hover:opacity-100 transition-opacity ease-in-out ">
+                    <div className="absolute bg-selected w-full h-0.5"></div>
+                  </div>
+                </div>
+              </div>
+              <div className="relative w-full h-0.5">
+                <div className="absolute bg-thirdlight w-full h-0.5"></div>
+                <div className="absolute bg-selected w-96 h-0.5"></div>
+              </div>
+              <Brands />
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+      <Footer />
     </div>
   );
 }
