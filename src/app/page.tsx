@@ -1,12 +1,9 @@
 import Slider from "@/components/Slider/Slider";
-import Header from "@/components/Header/Header";
-
 import { Host_Grotesk } from 'next/font/google'
 import { MdArrowForwardIos } from "react-icons/md";
 import Products from "@/components/Products/Products";
 import Categories from "@/components/Categories/Categories";
 import Brands from "@/components/Brands/Brands";
-import Footer from "@/components/Footer/Footer";
 
 const hk = Host_Grotesk({
   weight: '400',
@@ -15,8 +12,7 @@ const hk = Host_Grotesk({
 
 export default function Home() {
   return (
-    <div className="w-full h-full">
-      <Header hk={hk} />
+    <div>
       <hr className="text-gray-100 dark:text-neutral-700"></hr>
       <div className="bg-primarylight dark:bg-primarydark">
         <div className="flex flex-col items-center justify-center w-full mt-4">
@@ -82,7 +78,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

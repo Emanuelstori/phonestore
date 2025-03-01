@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Poppins } from 'next/font/google'
-
+import { Host_Grotesk, Poppins } from 'next/font/google'
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import { NotificationProvider } from "@/context/NotificationContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,6 +15,11 @@ const poppins = Poppins({
   subsets: ['latin'],
 })
 
+const hk = Host_Grotesk({
+  weight: '400',
+  subsets: ['latin'],
+})
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,8 +27,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" className={poppins.className}>
-      <body>
-        {children}
+      <body className="flex flex-col min-h-screen">
+        <NotificationProvider>
+          <Header hk={hk} />
+          <main className="flex flex-col flex-1 flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </NotificationProvider>
       </body>
     </html>
   );

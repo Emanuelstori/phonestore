@@ -1,24 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import "tailwindcss";
 
 @theme {
   --color-primarylight: #ffffff;
   --color-secoundarylight: #f5f5f5;
-  --color-thirdlight: #F3F9FB;
-  
+  --color-thirdlight: #f3f9fb;
 
   --color-primarydark: #3c3c3c;
   --color-secoundarydark: #373737;
   --color-thirddark: #333333;
 
-  --color-selected: #1490ca;  
+  --color-selected: #1490ca;
+
+  /* Definição das animações personalizadas */
+  --animate-fade: fade 0.3s ease-in-out;
+  --animate-slide: slide 0.3s ease-in-out;
 }
 
 :root {
   --background: var(--color-primarylight);
   --secoundary: var(--color-secoundarylight);
   --third: var(--color-thirdlight);
-  --foreground: #000000 ;
+  --foreground: #000000;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,11 +70,74 @@ body {
 
 a {
   color: inherit;
-  text-decoration: none;
 }
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+/* Estilos para o input de data */
+input[type="date"] {
+  position: relative; /* Para posicionamento do ícone */
+  padding-right: 2rem; /* Espaço para o ícone */
+  height: 3rem; /* Altura explícita compatível com outros inputs */
+  padding-top: 2.1rem; /* Reduz o padding superior para centralização */
+  padding-bottom: 1.4rem; /* Ajusta o padding inferior */
+  box-sizing: border-box; /* Garante que padding não aumenta o tamanho total */
+  appearance: none; /* Remove a aparência padrão em alguns navegadores */
+  min-height: 3rem; /* Garante uma altura mínima */
+}
+
+/* Posicionamento e espaçamento para o conteúdo da data */
+input[type="date"]::-webkit-datetime-edit {
+  visibility: hidden; /* Usa visibility em vez de display para manter o layout */
+  opacity: 0;
+  position: relative;
+  top: 0; /* Ajusta a posição vertical */
+  line-height: 1.5; /* Estabelece altura da linha consistente */
+  vertical-align: middle; /* Alinhamento vertical do texto */
+}
+
+/* Mostra o texto da data quando um valor foi selecionado */
+input[type="date"]:not(:placeholder-shown)::-webkit-datetime-edit {
+  visibility: visible;
+  opacity: 1;
+  color: var(--foreground); /* Usa a cor do tema */
+  display: flex; /* Usa flexbox para melhor alinhamento */
+  align-items: center; /* Centraliza verticalmente */
+  height: 100%; /* Ocupa toda a altura disponível */
+}
+
+/* Ajusta o posicionamento vertical do texto da data */
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* Estilo para o ícone do calendário */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 0.5rem; /* Posição à direita */
+  top: 50%;
+  transform: translateY(-50%); /* Centraliza verticalmente */
+  width: 1.25rem; /* Largura do ícone */
+  height: 1.25rem; /* Altura do ícone */
+  opacity: 0.7;
+  cursor: pointer;
+  padding: 0.25rem;
+  background-color: transparent;
+  z-index: 1; /* Garante que fica acima de outros elementos */
+}
+
+/* Estilo quando passar o mouse sobre o ícone */
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Remove spin button (setas para cima/baixo) */
+input[type="date"]::-webkit-inner-spin-button {
+  display: none;
 }
